@@ -1,13 +1,17 @@
+#Import libraries
 import board
 import adafruit_st25dv16
 from digitalio import DigitalInOut, Direction, Pull
 
+#Write to RFID chips
 class rfid:
     def __init__(self):
         self.i2c = board.I2C()
         self.eeprom = adafruit_st25dv16.EEPROM_I2C(self.i2c)
     
     def write(self,to_write,head=0x04):
+        #TBH, I used code I found and slightly modified it to work in here.
+        #Not entirely sure how it works. Feel free to take this if you need it
         str=to_write
         l=len(str)
         buf = bytearray ([0xe1, 0x40, 0x40, 0x05, 0x03, 0x00, 0xd1, 0x01, 0x00, 0x55])
@@ -24,8 +28,10 @@ class rfid:
             hex_string = ":".join("%02x" % b for b in self.eeprom[j:j+15])
             print(j, "> ", hex_string, "> ", self.eeprom[j:j+15])
 
+#Button functions
 class button:
     def __init__(self,button):
+        #Set button pin
         if button == 1:
             self.button = DigitalInOut(board.D9)
         if button == 0:
@@ -34,13 +40,17 @@ class button:
         self.button.pull = Pull.UP
     
     def get_press(self):
+        #For some reason, button.value is False if the button is pressed
+        #Not sure why but I swapped it here 
         if not self.button.value:
             return True
         else:
             return False
 
+#All the LED things
 class led_array:
     def __init__(self):
+        #Sets all the LEDs and appends to a list for ease-of-use
         self.list = []
         led1 = DigitalInOut(board.D0)
         led1.direction = Direction.OUTPUT
@@ -68,33 +78,41 @@ class led_array:
         self.list.append(led8)
 
     def fill(self):
+        #Turns on all the LEDs
         for led in self.list:
             led.value = True
     
     def clear(self):
+        #Turns off all the LEDs
         for led in self.list:
             led.value = False
     
     def activate(self,led):
+        #Turns on LED specified
         if type(led) == int:
             self.list[led].value = True
+        #Turns on LEDs specified
         if type(led) == list:
             for light in led:
                 self.list[light].value = True
     
     def deactivate(self,led):
+        #Turns off LED specified
         if type(led) == int:
             self.list[led].value = False
+        #Turns off LEDs specified
         if type(led) == list:
             for light in led:
                 self.list[light].value = False
 
     def toggle(self,led):
+        #Toggles LED specified
         if type(led) == int:
             if self.list[led].value == True:
                 self.list[led].value = False
             else:
                 self.list[led].value = True
+        #toggles LEDs specified
         if type(led) == list:
             for light in led:
                 if self.list[light].value == True:
