@@ -1,6 +1,7 @@
 ```
 The RFID sheild is a sheild I made for a class in my senior year of high school.
-I am uploading the code here and writing documentation for the library so that others can use it in the future.
+I am uploading the code here and writing documentation for the library so
+that others can use it in the future.
 
 ---------DOCUMENTATION---------
 Start by importing RFIDsheild. After you can do a few things:
@@ -40,7 +41,8 @@ chip.write('connorlayson.github.io')
 
 
 --==USE THE BUTTONS==--
-You need to pass which button is being defined as either a 1 or a 0. Button 0 is the top button, closest to the LEDs
+You need to pass which button is being defined as either a 1 or a 0. Button 0 is the top button,
+closest to the LEDs
 bottom_button = RFIDsheild.button(1)
 
 --bottom_button.get_press()--
