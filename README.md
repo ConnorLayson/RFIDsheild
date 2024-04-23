@@ -1,5 +1,6 @@
 ```
-The RFID sheild is a sheild I made for a class in my senior year of high school. I am uploading the code here and writing documentation for the library so that others can use it in the future.
+The RFID sheild is a sheild I made for a class in my senior year of high school.
+I am uploading the code here and writing documentation for the library so that others can use it in the future.
 
 ---------DOCUMENTATION---------
 Start by importing RFIDsheild. After you can do a few things:
@@ -79,14 +80,25 @@ Turns off a specific LED or LEDs. Needs 1 paramiter (see below)
 Toggles specific LED or LEDs on or off, whichever it isn't already. Needs 1 paramiter (see below)
 
 PARAMITERS:
-The led paramiter is the same for all 3 functions it is refrenced in. 
+The led paramiter is the same for all 3 functions it is refrenced in.
+It can either be a single integer or it can be a list of integers.
+A single integer will use only one LED while a list affects all the LEDs you mention in it
+
+                    LED array
+                      0   4
+                      1   5
+                      2   6
+                      3   7
 
 
+EXAMPLE:
+import RFIDsheild
+leds = RFIDsheild.led_array()
 
-
-
-
-
-
-
-
+#Toggle single LED
+leds.toggle(3)
+#Clear
+leds.clear()
+#Activate multiple LEDs
+to_light = [0,2,4,6]
+led.activate(to_light)
