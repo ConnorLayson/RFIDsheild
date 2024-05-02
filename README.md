@@ -1,17 +1,17 @@
 ```
-The RFID sheild is a sheild I made for a class in my senior year of high school.
+The RFID shield is a shield I made for a class in my senior year of high school.
 I am uploading the code here and writing documentation for the library so
 that others can use it in the future.
 
 ---------DOCUMENTATION---------
-Start by importing RFIDsheild. After you can do a few things:
+Start by importing RFIDshield. After you can do a few things:
 - Reprogram the RFID chip
 - Use the two buttons
 - Use the LED grid
 
 --==REPROGRAM THE RFID==--
 You don't need to pass any paramiters to init.
-rfid_chip = RFIDsheild.rfid()
+rfid_chip = RFIDshield.rfid()
 
 --rfid_chip.write()--
 Required:
@@ -32,8 +32,8 @@ head
                       0x04     https://
 --EXAMPLE--
 
-import RFIDsheild
-chip = RFIDsheild.rfid()
+import RFIDshield
+chip = RFIDshield.rfid()
 chip.write('connorlayson.github.io')
 
 
@@ -43,16 +43,16 @@ chip.write('connorlayson.github.io')
 --==USE THE BUTTONS==--
 You need to pass which button is being defined as either a 1 or a 0. Button 0 is the top button,
 closest to the LEDs
-bottom_button = RFIDsheild.button(1)
+bottom_button = RFIDshield.button(1)
 
 --bottom_button.get_press()--
 Returns True if the button is being pressed. No paramiters needed
 
 --EXAMPLE--
 
-import RFIDsheild
-buttonA = RFIDsheild.button(0)
-buttonB = RFIDsheild.button(1)
+import RFIDshield
+buttonA = RFIDshield.button(0)
+buttonB = RFIDshield.button(1)
 if buttonA.get_press():
   print('Button A clicked!')
 if buttonB.get_press():
@@ -64,7 +64,7 @@ if buttonB.get_press():
 
 --==USE THE LED GRID==--
 You don't need any paramiters to init
-leds = RFIDsheild.led_array()
+leds = RFIDshield.led_array()
 
 --leds.fill()--
 Turns on all the LEDs. No paramiters needed.
@@ -94,8 +94,8 @@ A single integer will use only one LED while a list affects all the LEDs you men
 
 
 EXAMPLE:
-import RFIDsheild
-leds = RFIDsheild.led_array()
+import RFIDshield
+leds = RFIDshield.led_array()
 
 #Toggle single LED
 leds.toggle(3)
