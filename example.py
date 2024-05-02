@@ -1,11 +1,11 @@
 import time
-import RFIDsheild
+import RFIDshield
 
-#Initalize each part of the RFID sheild
-leds = RFIDsheild.led_array()
-chip = RFIDsheild.rfid()
-top = RFIDsheild.button(0)
-bot = RFIDsheild.button(1)
+#Initalize each part of the RFID shield
+leds = RFIDshield.led_array()
+chip = RFIDshield.rfid()
+top = RFIDshield.button(0)
+bot = RFIDshield.button(1)
 
 selection = 0
 
